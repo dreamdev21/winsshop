@@ -1,0 +1,41 @@
+{
+  "name": "angular-pouchdb",
+  "authors": [
+    "Wilfred Springer <wilfredspringer@gmail.com>",
+    "Tom Vincent <http://tlvince.com/contact>"
+  ],
+  "description": "AngularJS wrapper for PouchDB",
+  "main": "angular-pouchdb.js",
+  "keywords": [
+    "angularjs",
+    "pouchdb"
+  ],
+  "license": "MIT",
+  "homepage": "https://angular-pouchdb.github.io/angular-pouchdb/",
+  "ignore": [
+    "**/*",
+    "**/.*",
+    "!README.md",
+    "!LICENSE.md",
+    "!angular-pouchdb.js",
+    "!angular-pouchdb.min.js"
+  ],
+  "dependencies": {
+    "angular": "~1.4.1",
+    "pouchdb": "~5.0.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.4.1"
+  },
+  "version": "4.0.0",
+  "_release": "4.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v4.0.0",
+    "commit": "7eccbbdd795948eeda4fb250f0d6fd80918a2e68"
+  },
+  "_source": "git://github.com/angular-pouchdb/bower-angular-pouchdb.git",
+  "_target": "~4.0.0",
+  "_originalSource": "angular-pouchdb",
+  "_direct": true
+}

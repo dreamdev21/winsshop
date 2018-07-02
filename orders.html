@@ -1,0 +1,278 @@
+<!doctype html>
+<html ng-app="starter" lang="de">
+	<head>
+		<title>Online Keller Herrenmühle</title>
+		<meta charset="utf-8">
+		<link rel="shortcut icon" href="favicon.ico" />
+		<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW" />
+		
+		<link rel="shortcut icon" href="favicon.ico" />
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script src="lib/ionic/js/ionic.bundle.js"></script>
+		<script src="lib/pouchdb/pouchdb-5.2.1.min.js"></script> 
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
+		<!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>-->
+		<script type="text/javascript" src="lib/angular-bootstrap/ui-bootstrap.min.js"></script>
+		 <script src="lib/angular-touch.min.js"></script>
+		<script src="lib/angular-bootstrap/ui-bootstrap-tpls-1.1.2.js"></script>
+		<script type="text/javascript" src="js/jquery.singlePageNav.min.js"></script>
+		<script type="text/javascript" src="js/jquery.superslides.min.js"></script>
+		<script type="text/javascript" src="js/jquery.countdown.min.js"></script>
+		<script type="text/javascript" src="js/wow.min.js"></script>
+		<script type="text/javascript" src="js/shop.js"></script>
+		<script type="text/javascript" src="js/shopapp.js"></script>
+		<script src="js/pouch.data.service.js"></script>
+		<script src="js/mainservices.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="lib/angular/angular-bootstrap-checkbox.js"></script>
+		<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">-->
+		 <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+		<link rel="stylesheet" href="css/superslides.css">
+		<link rel="stylesheet" href="css/shop.css">
+		<link rel="stylesheet" href="css/icons.css">
+		<link rel="stylesheet" href="css/animate.min.css">
+		<link rel="stylesheet" href="css/green.css" class="colors">
+		<link rel="shortcut icon" href="img/ico/32.png" sizes="32x32" type="image/png"/>
+		<link rel="apple-touch-icon-precomposed" href="img/ico/60.png" type="image/png"/>
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/ico/72.png" type="image/png"/>
+		<link rel="apple-touch-icon-precomposed" sizes="120x120" href="img/ico/120.png" type="image/png"/>
+		<link rel="apple-touch-icon-precomposed" sizes="152x152" href="img/ico/152.png" type="image/png"/>
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		
+		
+	</head>
+
+	<body id="home"  ng-controller="OrderController">
+		<div id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+					</button>
+						<img style="width: 60px;" alt="" class="logoBg" src="img/green_small.png"/><a class="xnavbar-brand" href="#home"><!--<i class="icon-tint"></i><i class="icon-glass"></i>--> <img class="hidden-xs" src="img/herrenmuehle.png" width="295" alt="" /></a>
+								
+			
+				
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul id="navigation" class="nav navbar-nav navbar-right text-center">
+						<li><a href="/">Home</a></li>
+						<li><a href="#home">nach oben</a></li>
+						<!--<li><a href="#testimonial">Testimonials</a></li> -->
+						<li><a href="#orderform">Bestellungen</a></li>
+					
+					</ul>
+				</div>
+
+			</div>
+		</div>
+
+
+		<section id="orderform" class="gray-bg padding-top-bottom">
+			<div class="container" style="padding-top: 30px;">
+				<header class="section-header text-center">
+					<h2>Bestellungen</h2>
+				</header>
+				
+					<div class="row">
+						<div class="col-sm-12 col-md-12">
+						<table class="table">
+						  <thead>
+							<tr>
+							  <th><span class="hidden-xs">Kunde</span>
+							  <span class="visible-xs">wer</span>
+							  </th>
+							  <th class="">Datum</th>
+							   <th class="vert-align">€</th>
+							   	
+							 <!-- <th><span class="hidden-xs">Jahrgang</span>
+							  <span class="visible-xs">jahr</span></th>
+							  <th>
+							  <span class="hidden-xs">€ Einzelpreis</span>
+							  <span class="visible-xs">€</span>
+							  </th>
+							  -->
+							  <th class="vert-align">
+							  #
+							  </th>
+							  <th class="text-center">wer</th>
+							  <th class="text-right"><span class="hidden-xs">€ Summe</span>
+							  <span class="visible-xs" style="font-size: 11pt;">&sum;</span></th>
+							</tr>
+						  </thead>
+						  <tbody ng:repeat="e in allebestellungen  track by $index" >
+						  	 <tr ng-swipe-left="showActions = true">
+						  	 	<td class="vert-align strong pointer" ng-click="openModal(e._id)">{{e.customer.firstname}} {{e.customer.lastname}}</td>
+						  	 	<td class="vert-align">{{e.orderdate | date:'dd.MM.yyyy HH:mm'}}</td>
+						  	 	<td class="vert-align">&nbsp;</td>
+						  	 	
+						  	 	<td class="vert-align strong">{{getSum(e._id)}}</td>
+						  	 	<td class="text-center strong">&nbsp;</td>
+						  	 	<!-- <td class="text-right vert-align">{{e.menge.value * e.preis | filters[0]  }}</td> -->
+						  	 	 <td class="text-right strong vert-align">{{ $eval("getTotal(e._id) | "+filters[0])}}</td>
+						  	 </tr>
+						  	 <tr  ng-show="!showActions" ng:repeat="o in e.orders">
+						  	 	<td class="vert-align smaller">{{o.Bezeichnung}}</td>
+						  	 	<td class="vert-align smaller">{{o.Jahrgang}}</td>
+						  	 	<td class="vert-align smaller">{{$eval("o.preis | "+filters[0])}}</td>
+						  	 	<td class="vert-align smaller">{{o.menge}}</td>
+						  	 	<td class="text-center smaller">{{o.owner}}</td>
+						  	 	<td class="text-right vert-align smaller">{{$eval("o.preis * o.menge | "+filters[0])}}</td>
+						  	 </tr>	
+						  	 <tr ng-show="showActions" ng-swipe-right="showActions = false">
+						  	  	<td colspan="6">
+						  	   <button ng-click="setItemState('erledigt',e._id)">erledigt</button><br />
+						  	   <button ng-click="deleteItem(e._id)">löschen</button>
+						  	   </td>
+						  	 </tr>
+						</tbody>
+					  </table>
+					</div>	
+					
+					
+
+				</div>
+			  
+
+			</div>
+			</section>
+		<div class="modal modal-wide text-modal" tabindex="-1" role="dialog" aria-hidden="true" id="currOrder">
+			<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="color-bg">	
+					<div class="container">
+					
+						<div class="col-xs-12 col-sm-12 col-md-12 color-bg light-typo" id="9modal-bar">
+							<h2 class="pull-left">Bestellung von {{currOrder.customer.firstname}} {{currOrder.customer.lastname}}</h2>
+							<a class="close pull-right" href="#" data-dismiss="modal" ><i class="icon-close"></i></a>
+						</div>
+						
+					</div>
+				</div>
+				<div class="container">
+					<div class="row ">
+						<div class="col-xs-12 col-sm-6 col-md-6" >	
+							<p class="higher text-center"><strong>Kundeninformation</strong></p>
+							<div class="row">
+								<div class="col-sm-6 col-md-6">
+									<div class="form-group">
+										<label class="control-label">Vorname</label>
+										<input ng-model="currOrder.customer.firstname" placeholder="Vorname" class="form-control" type="text">
+									</div>
+								</div>
+								<div class="col-sm-6 col-md-6">
+									<div class="form-group">
+										<label class="control-label">Nachname</label>
+										<input ng-model="currOrder.customer.lasttname"  placeholder="Nachname" class="form-control" type="text" >
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12" >
+									<div class="form-group">
+										<label class="control-label" >Email</label>
+										<input ng-model="currOrder.customer.useremail"  placeholder="Email" class="form-control" type="email">
+									</div>
+									
+								</div>
+							</div>							
+						   	<div class="row">
+								<div class="col-sm-6 col-md-6">
+									<div class="form-group">
+										<label class="control-label">gewünschte Lieferart</label>
+										<input ng-model="currOrder.customer.delivery" placeholder="lieferart" class="form-control" type="text">
+									
+										
+									</div>
+								</div>
+								<div class="col-sm-6 col-md-6">
+									<label class="control-label">gewünschte Zahlungsweise</label>
+									<input ng-model="currOrder.customer.payment"  placeholder="zahlung" class="form-control" type="text" >
+								</div>
+							</div>
+							<p class="text-center"><strong>Lieferadresse</strong></p>
+							
+									<div class="form-group">
+										<label class="pull-left control-label">Straße und Hausnr.</label>
+										<input name="street" placeholder="Strasse" class="form-control" type="text"  required ng-model="currOrder.customer.streetaddres" ng-disabled="delivery=='abholung'">
+									</div>
+									
+									<div class="col-sm-6 col-md-6">
+										<div class="form-group">
+											<label class="control-label">Postleitzahl</label>
+											<input ng-model="currOrder.customer.zipcode" placeholder="PLZ" class="form-control" type="text">
+										</div>
+									</div>
+									<div class="col-sm-6 col-md-6">
+										<div class="form-group">
+											<label class="control-label">Ort</label>
+											<input ng-model="currOrder.customer.city"  placeholder="Ort" class="form-control" type="text" >
+										</div>
+									</div>
+									
+									<!--<div class="form-group">
+										<label class="pull-left control-label">Postleitzahl</label>
+										<input name="postcode" placeholder="PLZ" class="form-control" type="text"   required ng-model="currOrder.customer.zipcode">
+									</div>	
+									<div class="form-group">
+										<label class="pull-left control-label">Ort</label>
+										<input name="city" placeholder="Ort" class="form-control" type="text"   required ng-model="currOrder.customer.city">
+									</div>	-->
+									<div class="form-group" ng-hide="true">
+										<label class="pull-left control-label">Land</label>
+										<input name="Country" placeholder="Land" class="form-control" type="text" ng-model="user.country">
+									</div>	
+									<p class="text-center"><strong>Mail an Kunden</strong></p>
+							
+									<div class="form-group">
+										<label class="control-label" for="contact-message">Mitteilung</label>
+										<div class="controls">
+											<textarea id="contact-message" name="comments" placeholder="Ihre Nachricht" class="form-control input-lg requiredField" rows="3"  ng-model="contact.message"></textarea>
+										</div>
+									</div>
+									<p>
+										<button ng-click="submitContactMessage()" class="btn btn-store btn-block blur">Senden</button>
+									</p>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-6" >
+							<p class="higher text-center"><strong>Bestellung</strong></p>
+							<div class="tabcontainer">
+							<table class="table">
+							  <thead>
+							  	<th class="vert-align strong">was</th>
+								  <th class="">jahr</th>
+								
+								  <th class="vert-align">menge</th>
+								  <th class="text-center">preis</th>
+								  <th class="text-right">wer</th>
+								</tr>
+							  </thead>
+							  <tbody ng:repeat="e in currOrder.orders" >
+							  	 <tr>
+							  	 	<td class="vert-align strong">{{e.Bezeichnung}}</td>
+							  	 	<td class="vert-align">{{e.Jahrgang}} </td>
+							  	 	<td class="vert-align">{{e.menge}}</td>
+							  	 	<td class="vert-align strong">{{e.preis}}</td>
+							  	 	<td class="text-center strong">{{e.owner}}</td>
+							  	 	
+							  	 </tr>
+							  </tbody>
+							 </table>	
+							 </div>
+							 <a class="btn btn-store btn-block" href="#" data-dismiss="modal">Zur Bestellungsliste</a>						
+						</div>
+					
+						
+					</div> <!-- row -->
+				
+				</div><!-- container -->
+			</div> <!-- modal content -->
+				</div> <!-- modal dialog-->
+				
+	</div> <!-- modal -->
+  </body>
+</html>

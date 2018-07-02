@@ -1,0 +1,1045 @@
+<!doctype html>
+<html ng-app="starter" lang="de">
+	<head>
+		<title>Online Keller Herrenmühle</title>
+		<meta charset="utf-8">
+		<link rel="shortcut icon" href="favicon.ico" />
+		<meta name="ROBOTS" content="FOLLOW, NOIMAGEINDEX" />
+		
+		<meta name="Author" content="P. de Waard, Herrenmühle Wein" />
+		
+		<meta name="description" content="Wein aus Ehrenkirchen, Markgräfler Land, Ehrenkirchen, Ehrenstetten Weingut Stehlin, Herrenmühle, de Waard, Hainy, traditionell, Handwerk, Weinkeller, Winzer,Winzersekt, Sekt" />
+		<meta name="Keywords" content="Wein aus Ehrenkirchen, Markgräfler Land, Ehrenkirchen, Ehrenstetten Weingut Stehlin, Herrenmühle, de Waard, Hainy, traditionell, Handwerk, Weinkeller, Winzer,Winzersekt, Sekt" />
+		<meta name="Abstract" content="Wein aus Ehrenkirchen, Markgräfler Land, Ehrenkirchen, Ehrenstetten Weingut Stehlin, Herrenmühle, de Waard, Hainy, traditionell, Handwerk, Weinkeller, Winzer,Winzersekt, Sekt" />
+		
+		<meta name="Copyright" content="2003 - 2016 Pitt de Waard - Creative commons licence" />
+		<meta name="Revisit-After" content="1 Days" />
+		<meta name="description" content="Wein aus Ehrenkirchen">
+		<link rel="shortcut icon" href="favicon.ico" />
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script src="lib/ionic/js/ionic.bundle.js"></script>
+		<script src="lib/pouchdb/pouchdb-5.2.1.min.js"></script> 
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
+		<!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>-->
+		<script type="text/javascript" src="lib/angular-bootstrap/ui-bootstrap.min.js"></script>
+		  <script src="lib/angular-touch.min.js"></script>
+		<script src="lib/angular-bootstrap/ui-bootstrap-tpls-1.1.2.js"></script>
+		<script type="text/javascript" src="js/jquery.singlePageNav.min.js"></script>
+		<script type="text/javascript" src="js/jquery.superslides.min.js"></script>
+		<script type="text/javascript" src="js/jquery.countdown.min.js"></script>
+		<script type="text/javascript" src="js/wow.min.js"></script>
+		<script type="text/javascript" src="js/shop.js"></script>
+		<script type="text/javascript" src="js/shopapp.js"></script>
+		<script src="js/pouch.data.service.js"></script>
+		<script src="js/mainservices.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+		
+		<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">-->
+		 <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+		<link rel="stylesheet" href="css/superslides.css">
+		<link rel="stylesheet" href="css/shop.css">
+		<link rel="stylesheet" href="css/icons.css">
+		<link rel="stylesheet" href="css/animate.min.css">
+		<link rel="stylesheet" href="css/green.css" class="colors">
+		<script src="lib/angular/angular-bootstrap-checkbox.js"></script>
+		<link rel="shortcut icon" href="img/ico/32.png" sizes="32x32" type="image/png"/>
+		<link rel="apple-touch-icon-precomposed" href="img/ico/60.png" type="image/png"/>
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/ico/72.png" type="image/png"/>
+		<link rel="apple-touch-icon-precomposed" sizes="120x120" href="img/ico/120.png" type="image/png"/>
+		<link rel="apple-touch-icon-precomposed" sizes="152x152" href="img/ico/152.png" type="image/png"/>
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		</head>
+
+	<body id="home"  ng-controller="MainController">
+		<div id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+					</button>
+						<img style="width: 60px;" alt="" class="logoBg" src="img/green_small.png"/><a class="xnavbar-brand" href="#home"><!--<i class="icon-tint"></i><i class="icon-glass"></i>--> <img class="hidden-xs" src="img/herrenmuehle-schriftzug.png" width="295" alt="" /></a>
+								
+			
+				
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul id="navigation" class="nav navbar-nav navbar-right text-center">
+						<li><a href="#products">Weingallerie</a></li>
+						<li><a href="#home">nach oben</a></li>
+						<!--<li><a href="#testimonial">Testimonials</a></li> -->
+						<li><a href="#orderform">Bestellung</a></li>
+						<!--<li><a href="#contact">Kontakt</a></li>
+						<li class="dropdown">
+							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">DE</button>
+							<ul class="dropdown-menu">
+							<li><a href="#">English</a></li>
+							<li><a href="#">Deutsch</a></li>
+							<li><a href="#">France</a></li>
+							
+						  </ul>
+						</li>-->
+						<li ng-hide="true" ><a href="#puzzle">Gewinnspiel</a></li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+
+		<section id="hero" class="light-typo ">
+		<h1 class="neon">online-weinkeller</h1>
+			<div class="container welcome-content">
+				<div class="row">
+					<div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12 text-center wow fadeInUp">
+						<!--<img id="logo" src="img/logo-green.png" class="img-responsive text-center" alt="shop logo" width="300"> -->
+						
+						<h1 style="font-size: 32pt;">WIR MACHEN <b>WEIN</b>.PUNKT!</h1><br />
+						<!--<ul class="social-links text-center">
+							<li><a href="#link"><i class="icon-google+"></i></a></li>
+							<li><a href="#link"><i class="icon-facebook"></i></a></li>
+							<li><a href="#link"><i class="icon-vimeo"></i></a></li>
+						</ul> -->
+						<a class="btn btn-store smooth-scroll outline" href="#products">Liste ansehen</a><br />
+						<h1>Damit Sie unsere Weine genießen können, auch wenn Sie nicht in der Nähe leben!</h1>
+					</div>
+				</div>
+			</div>
+			<div class="overlayimg-bg"></div>
+			<div id="hero-slides">
+				<div class="slides-container">
+					<img src="img/hm-sekt.png" alt="">
+					<img src="img/bg/bg5.jpg" alt="">
+					<img src="img/portfolio/member-3.jpg" alt="">
+				</div>
+			</div>
+		</section>
+
+		<section id="products" class="gray-bg padding-top-bottom">
+			<div class="container">
+				<header class="section-header text-center wow fadeInUp">
+					<h2>Unsere Weine</h2>
+				</header>
+			</div>
+			<div class="container">
+				<div id="projects-container" class="row">
+					<article class="design product col-xs-12 col-sm-6 col-md-4 wow fadeInUp" data-wow-delay="0.2s">
+						<div class="img-box">
+							<div class="hover-mask2"></div>
+							<span class="product-icon icon-eye"></span>
+							<img class="img-responsive project-image" src="img/shop/produkte1.jpg" alt="">
+						</div>
+						<div class="product-info col-md-12">
+														<div>
+								<h4 class="project-title">Weißwein</h4>
+							</div>
+						</div>
+						<div class="sr-only project-description"  data-oldprice="" data-images="img/portfolio/member-1.jpg,img/portfolio/member-2.jpg,img/portfolio/member-5.jpg,img/portfolio/member-4.jpg,img/portfolio/member-6.jpg">
+							<p>1Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p>
+						</div>
+					</article>
+					
+					<article class="mock-up product col-xs-12 col-sm-6 col-md-4 wow fadeInUp" data-wow-delay="0.4s">
+						<div class="img-box">
+							<div class="hover-mask2"></div>
+							<span class="product-icon icon-eye"></span>
+							<img class="img-responsive project-image" src="img/shop/produkte2.jpg" alt="">
+						</div>
+						<div class="product-info col-md-12">
+														<div>
+								<h4 class="project-title">Rotwein</h4>
+							</div>	
+						</div>
+						<div class="sr-only project-description" data-images="img/portfolio/member-1.jpg,img/portfolio/member-2.jpg,img/portfolio/member-3.jpg,img/portfolio/member-4.jpg">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p>
+							
+						</div>
+					</article>
+					
+					<article class=" icons product col-xs-12 col-sm-6 col-md-4 wow fadeInUp" data-wow-delay="0.6s">
+						<div class="img-box">
+							<div class="hover-mask2"></div>
+							<span class="product-icon icon-eye"></span>
+							<img class="img-responsive project-image" src="img/shop/produkte3.jpg" alt="">
+						</div>
+						<div class="product-info col-md-12">
+							
+							<div>
+								<h4 class="project-title">Sekt</h4>
+							</div>	
+						</div>
+						<div class="sr-only project-description" data-oldprice="" data-images="img/portfolio/member-2.jpg,img/portfolio/member-3.jpg,img/portfolio/member-6.jpg">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p>
+							
+						</div>
+					</article>
+				</div>
+			</div>
+
+			<div id="project-modal" class="modal " style="display: none;" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<a class="close" href="#" data-dismiss="modal" ><i class="icon-close"></i></a>
+							<div class="loader" style="display: block;"></div>
+							<div class="screen"></div>
+						</div>
+						<div class="modal-body">
+							<div class="container">
+								<div class="row">
+									<div id="project-sidebar" class="col-md-4 ">
+										<h2 id="sdbr-title">&nbp;</h2>	
+										<div>
+											<div id="sdbr-price"></div>
+											<div id="sdbr-oldprice"></div>
+										</div>
+									</div>
+									<div id="project-content" class="col-md-8 ">
+										<!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p> -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!--<section class="gray-bg padding-top-bottom ">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 wow fadeInLeft">
+						<h3 class="center cta-message">Frei Lieferung nur noch  <strong><span id="countdown"></span></strong></h3>
+
+					</div>
+					<div class="col-md-4 text-center wow fadeInRight">
+						<a class="btn btn-store cta-button smooth-scroll" href="#orderform" >Jetzt bestellen</a>
+					</div>
+				</div>
+			</div>
+		</section> -->
+		
+		<section id="about" class="padding-top-bottom ">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 wow fadeInLeft">
+						<header class="section-header cta-message">
+							<h2>Herrenmühle Wein</h2>
+							<h4>Im Weingut Stehlin, Ehrenstetten</h4>
+						</header>
+					</div>
+					<div class="col-md-8 cta-message wow fadeInUp">
+						<p>(Fast) alles von Hand: So pflegen wir unsere Rebanlagen und so behandeln wir unsere Trauben und den Wein. So viel Technik wie nötig und so viel natürliche Prozesse wie möglich. Auch bei der Lese setzen wir auf Handauslese! Mehr erfahren sie hier:</p>
+						<p style="display:none;" id="showme"></p>
+						<a class="btn btn-store outline" id="sxhow-btn" href="https://www.herrenmuehle-wein.de">zur Website</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<section id="testimonial" class="padding-top-bottom image-bg light-typo">
+			<div class="container">
+				
+				<div class="testimonial">
+					<div id="carousel-example-generic" class="carousel slide bs-docs-carousel-example" data-interval="10000">
+						<ol class="carousel-indicators">
+							<li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
+							<li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
+							<li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+						</ol>
+						<div class="carousel-inner">
+							<div class="item" style="z-index: 12;">
+								<h1>Alle Weine sind unbelastet von modischen Trends <br />traditionell ausgebaut und durchgegoren trocken.</h1>
+								<br>
+								<h3>&nbsp;</h3>
+							</div>
+							<div class="item active" style="z-index: 12;">
+								<h1>So einfach wie möglich. Aber nicht einfacher!<br />&nbsp;</h1>
+								<br>
+								<h3>Albert Einstein</h3>
+							</div>
+							<div class="item" style="z-index: 12;">
+								<h1>Es soll keiner so wenig Wein trinken,<br />
+								dass er seiner Gesundheit schadet.</h1>
+								<br>
+								<h3>Marc Aurel</h3>
+							</div>
+						</div>
+						<br><br><br>
+					</div>
+				</div>
+				<div class="overlayimg-bg"></div>
+			</div>
+		</section>
+
+		<!--<section id="newsletter" class="light-typo dark-bg padding-top-bottom">
+			<div class="container ">
+				<header class="section-header text-center">
+					<h2>Newsletter</h2>
+					<h4>Sign Up for Email Updates on on News & Offers</h4>
+				</header>
+				<div class="row">
+					<form id="newsletter-form" action="index.html" method="POST" class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 ">
+						<div class="input-group">
+							<input id="newsletter-mail" name="email" placeholder="Enter your email" class="form-control input-lg" type="email" >
+							<span class="input-group-btn">
+								<button name="submit" type="submit" class="btn btn-store">Anmelden!</button>
+							</span>
+						</div>
+						<input type="hidden" name="submitted" id="submitted2" value="true">
+					</form>
+				</div>
+			</div>
+		</section>	-->
+
+		<section id="orderform" class="gray-bg padding-top-bottom">
+			<div class="container">
+				<header class="section-header text-center">
+					<h2>Bestellung</h2>
+				</header>
+				<form id="order-form">
+					<div class="row">
+						<div class="col-sm-12 col-md-12">
+						<table class="table">
+						  <thead>
+						   <tr><td colspan="4"><input placeholder="suche" type="text" ng-model="searchText"></td><td class="hidden-xs">&nbsp;</td><td class="text-right">&nbsp;</td></tr>
+							<tr>
+							  <th><span class="hidden-xs">Produkt</span>
+							  <span class="visible-xs">was</span>
+							  </th>
+							  <th><span class="hidden-xs">Jahrgang</span>
+							  <span class="visible-xs">jahr</span></th>
+							  <th class="hidden-xs">% Alkohol</th>
+							  <th> 
+							  <span class="hidden-xs">€ Einzelpreis</span>
+							  <span class="visible-xs">€</span>
+							  </th>
+							  <th class="text-center">
+							  <span class="hidden-xs">Menge</span>
+							  <span class="visible-xs">#</span>
+							  </th>
+							  <th class="text-right"><span class="hidden-xs">€ Summe</span>
+							  <span class="visible-xs">€</span></th>
+							</tr>
+						  </thead>
+						  <!-- order in  result =( allorders |orderBy:orderByField:reverseSort | filter:searchText)  -->
+						  <tbody ng:repeat="e in result =(alleprodukte |filter:searchText) track by $index" >
+						  	 <tr>
+						  	 	<td class="vert-align strong" ng-bind="e.Bezeichnung"></td>
+						  	 	<td class="vert-align" ng-bind="e.Jahrgang"></td>
+						  	 	<td class="hidden-xs vert-align">{{e.alkohol | percentage:2}}</td>
+						  	 	<td class="vert-align">{{$eval("e.preis | "+filters[0])}}</td>
+						  	 	<td class="text-center">
+						  	 		<select ng-hide="e.preis==null" class="form-control form-control-inline" ng-model="e.menge" ng-change="checkShopBag($index)" ng-options="opt as opt.label for opt in options"></select>
+						  	 	</td>
+						  	 	<!-- <td class="text-right vert-align">{{e.menge.value * e.preis | filters[0]  }}</td> -->
+						  	 	  <td class="text-right vert-align"><span ng-hide="e.preis==null">{{$eval("e.preis * e.menge.value | "+filters[0])}}</span></td>
+						  	 	</tr>
+						  	 	<tr>
+						  	 		 	<td colspan="6" class="smaller" ng-bind="e.Beschreibung"></td>
+						  	 	</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						  </tbody>
+						</table>
+						</div>	
+						 </form>
+					<div class="col-sm-6 col-md-6">
+					
+					<table class="table">
+					  <thead>
+						<tr>
+						  <th style="border-bottom:0px !important" colspan="3" class="text-center strong">Zusammenfassung</th>
+						</tr>
+					  </thead>
+					  <tbody>
+						<tr>
+						  <td class="strong">Versandkosten:</td>
+						  <td></td>
+						  <td class="text-right strong">{{$eval("myOrder.ship | "+filters[4])}}</td>
+						</tr>
+						<tr>
+						  <td class="strong">Waren:</td>
+						  <td></td>
+						  <td id="total" class="text-right strong">{{$eval("myOrder.sum | "+filters[4])}}</td>
+						</tr>
+						<tr style="padding-bottom: 2px;">
+						  <td class="strong">Gesamtbetrag:</td>
+						  <td></td>
+						  <td id="total" class="text-right strong">{{$eval("myOrder.total | "+filters[4])}}</td>
+						</tr>
+					  </tbody>
+					</table>
+					<p class="text-center"><strong>meine Weinkiste</strong></p>
+					<p>
+						<!--<button name="submit" type="submit" class="btn btn-store btn-block">kostenpflichtig bestellen</button>-->
+						<div class="full">
+						<a class="btn btn-store-small outline  btn-half" href="#" data-toggle="modal" data-target=".basket" ng-disabled="myOrder.items==0">Warenkorb anzeigen</a> 
+						<a class="btn btn-store-small outline  btn-half" href="#" ng-click="resetBasket()">Warenkorb leeren</a>
+						</div>
+					</p>
+						
+					</div>
+					<div class="col-sm-6 col-md-6">
+					 <p class="higher text-center"><strong>Kundeninformation</strong></p>
+					 <div class="row">
+					 	<div class="col-sm-6 col-md-6">
+					 		<div class="form-group">
+					 			<label class="control-label">Vorname</label>
+					 			<input ng-model="user.firstname" placeholder="Vorname" class="form-control input-lg" type="text">
+					 		</div>
+					 	</div>
+					 	<div class="col-sm-6 col-md-6">
+					 		<div class="form-group">
+					 			<label class="control-label">Nachname</label>
+					 			<input ng-model="user.lastname"  placeholder="Nachname" class="form-control input-lg" type="text" >
+					 		</div>
+					 	</div>
+					 </div>
+					 <div class="form-group">
+					 	<label class="control-label" >Email</label>
+					 	<input ng-blur="getUser()" ng-model="user.useremail"  placeholder="Email" class="form-control input-lg" type="email">
+					 </div>
+					 				
+					 <p class="text-center" style="padding-top: 11px;"><strong>Gutscheinnummer</strong></p>
+					 	<div class="input-group ">
+					 		<input ng-disabled="user.voucherchecked" ng-model="vouchercode" placeholder="Gutschein Code" class="form-control input-lg" type="text" >
+					 		<span class="input-group-btn">
+					 			<button ng-click="checkVoucherCode(vouchercode)" class="btn btn-store"><span ng-hide="user.voucherchecked">prüfen!</span><span style="font-size: 12pt;" class="glyphicon glyphicon-ok" ng-show="user.voucherchecked" ></span></button>
+					 		</span>
+					 	</div>
+					 
+					 				
+					 
+					</div>
+					
+					
+
+				</div>
+			  
+
+			</div>
+			<div id="alert" class="container bg-success fixed-bottom" ></div>
+			
+			<div class="modal fade basket" id="orderbasket" tabindex="-1" role="dialog" aria-hidden="true">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="color-bg">	
+							<div class="container">
+								<div class="row ">
+									<div class="col-xs-12 col-sm-12 col-md-12 color-bg light-typo" id="basket">
+										<h2 class="pull-left">Warenkorb</h2>
+										<a class="close pull-right" href="#" data-dismiss="modal" ><i class="icon-close"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="container">
+							<div class="row ">
+								<div class="col-xs-12 col-sm-6 col-md-6">
+							
+								</div>
+								
+								<div class="col-xs-12 col-sm-6 col-md-6">
+								
+								</div>
+							</div>
+						</div>
+						<div class="container">
+							<div class="row ">
+								<div class="col-xs-12 col-sm-12 col-md-12">	
+									<table class="table">
+									  <thead>
+									 
+										<tr>
+										  <th><span class="hidden-xs">Produkt</span>
+										  <span class="visible-xs">was</span>
+										  </th>
+										  <th><span class="hidden-xs">Jahrgang</span>
+										  <span class="visible-xs">jahr</span></th>
+										  
+										  <th  class="text-right"> 
+										  <span class="hidden-xs">€ Einzelpreis</span>
+										  <span class="visible-xs">€</span>
+										  </th>
+										  <th class="text-right">
+										  <span class="hidden-xs">Menge</span>
+										  <span class="visible-xs">#</span>
+										  </th>
+										  <th class="text-right"><span class="hidden-xs">€ Summe</span>
+										  <span class="visible-xs">€</span></th>
+										</tr>
+									  </thead>
+									  <tbody ng:repeat="e in myOrder track by $index" > 
+									  <!--  filter:'!'+filterpost"-->
+									  	 <tr ng-hide="e.menge.value==0">
+									  	 	<td class="vert-align strong" ng-bind="e.Bezeichnung"></td>
+									  	 	<td class="vert-align" ng-bind="e.Jahrgang"></td>
+									  	 
+									  	 	<td class="vert-align text-right">{{$eval("e.preis | "+filters[0])}}</td>
+									  	 	<td class="vert-align text-right" ng-bind="e.menge.value">
+									  	 	</td>
+									  	 	<!-- <td class="text-right vert-align">{{e.menge.value * e.preis | filters[0]  }}</td> -->
+									  	 	  <td class="text-right vert-align"><span ng-hide="e.preis==null">{{$eval("e.preis * e.menge.value | "+filters[0])}}</span></td>
+									  	 	</tr>
+									  	 
+									  	 </tbody><tbody>
+										
+										<tr>
+											 <td class="strong">Warenwert:</td>
+											
+											<td></td>
+											<td></td>
+											<td></td>
+											<td class="text-right strong">{{$eval("myOrder.sum | "+filters[4])}}</td>
+										</tr>
+										<tr>
+										<td class="strong">Versandkosten:</td>
+										
+										<td></td>
+										<td></td>
+										<td></td>
+										<td class="text-right strong">{{$eval("myOrder.ship | "+filters[4])}}</td>
+										</tr>
+										<tr>
+											 <td class="strong vert-align bottom">Rechnungsbetrag:</td>
+											
+											<td class="strong vert-align bottom"></td>
+											<td class="strong vert-align bottom"></td>
+											<td class="strong vert-align bottom"></td>
+											<td class="strong vert-align bottom text-right">{{$eval("myOrder.total | "+filters[4])}}</td>
+										</tr>
+										<tr>
+											 <td>enthaltende MwSt. von {{$eval("myOrder.sum | "+filters[4])}}:</td>
+											
+											<td></td>
+											<td></td>
+											<td></td>
+											<td class="text-right">{{$eval("myOrder.sum - myOrder.sum / 1.19| "+filters[4])}}</td>
+										</tr>
+									  </tbody>
+									</table>
+								  </div>
+								</div>
+								<div class="row ">
+									<div class="col-xs-12 col-sm-6 col-md-6 text-center">
+									 
+										<p class="text-center"><strong>Lieferart</strong></p>
+										<div class="btn-group text-center full" data-toggle="buttons" id="delivery">
+										 <label class="btn btn-success onethird" id="dhl">
+										     <input class="fullhigh" type="radio"  ng-model="delivery" value="dhl" autocomplete="off"> Versenden
+										   </label>
+										   <label class="btn btn-success onethird" id="liefern">
+										     <input class="fullhigh" type="radio" ng-model="delivery"  value="liefern" autocomplete="off"> Auslieferung
+										   </label>
+										   <label class="btn btn-success onethird" id="abholung">
+										     <input class="fullhigh" type="radio"  ng-model="delivery" value="abholung" autocomplete="off"> Abholung
+										   </label>
+										 </div>
+										<p class="text-center blur"><strong>Zahlungsart</strong></p>
+										<form name="outerForm" class="tab-form-demo">
+										  <uib-tabset active="activeForm">
+										    <uib-tab index="0" heading="Paypal">
+										      <ng-form name="nestedForm">
+										        <div class="form-group">
+										          <label>Name</label>
+										          <input type="text" class="form-control" ng-model="user.cardname"/>
+										        </div>
+										      </ng-form>
+										    </uib-tab>
+										    <uib-tab index="2" heading="Kreditkarte">
+										     <div class="row">
+										     	<div class="col-sm-8 col-md-8">
+										     		<div class="form-group">
+										     			<label class="control-label">Name</label>
+										     			<input name="Card number" placeholder="Kartenunmmer" class="form-control input-lg" type="text">
+										     		</div>
+										     	</div>
+										     	<div class="col-sm-4 col-md-4">
+										     		<div class="form-group">
+										     			<label class="control-label">Code</label>
+										     			<input name="Code" placeholder="Kartencode" class="form-control input-lg" type="text" >
+										     		</div>
+										     	</div>
+										     </div>
+										     <div class="row">
+										     	<div class="col-sm-6 col-md-6">
+										     		<div class="form-group">
+										     			<label class="control-label" for="contact-mail">Monat</label>
+										     			<div class=" controls">
+										     				<select class="form-control">
+										     				  <option>Januar</option>
+										     				  <option>Februar</option>
+										     				  <option>März</option>
+										     				  <option>April</option>
+										     				  <option>Mai</option>
+										     				  <option>Juni</option>
+										     				  <option>Juli</option>
+										     				  <option>August</option>
+										     				  <option>September</option>
+										     				  <option>Oktober</option>
+										     				  <option>November</option>
+										     				  <option>Dezember</option>
+										     				</select>
+										     			</div>
+										     		</div>	
+										     	</div>	
+										     	<div class="col-sm-6 col-md-6">
+										     		<div class="form-group">
+										     			<label class="control-label" for="contact-mail">Jahr</label>
+										     			<div class=" controls">
+										     				<select class="form-control">
+										     				  <option>2016</option>
+										     				  <option>2017</option>
+										     				  <option>2018</option>
+										     				  <option>2019</option>
+										     				  <option>2020</option>
+										     				  <option>2021</option>
+										     				  <option>2022</option>
+										     				  <option>2023</option>
+										     				  <option>2024</option>
+										     				</select>
+										     			</div>
+										     		</div>	
+										     	</div>	
+										     </div>
+										    </uib-tab>
+										    <uib-tab index="3" heading="Nachname">
+										      Some Tab Content
+										    </uib-tab>
+										    <uib-tab index="4" heading="Bar">
+										      More Tab Content
+										    </uib-tab>
+										  </uib-tabset>
+										</form>
+									</div>
+									
+									<div class="col-xs-12 col-sm-6 col-md-6  text-center">
+											<p class="text-center"><strong>Lieferadresse</strong></p>
+												<div class="form-group" style="margin-top: -15px !important">
+													<label class="pull-left control-label">Straße und Hausnr.</label>
+													<input name="street" placeholder="Strasse" class="form-control" type="text"  required ng-model="user.streetaddress" ng-disabled="delivery=='abholung'">
+												</div>	
+												<div class="form-group">
+													<label class="pull-left control-label">Postleitzahl</label>
+													<input name="postcode" placeholder="PLZ" class="form-control" type="text"   required ng-model="user.zipcode">
+												</div>	
+												<div class="form-group">
+													<label class="pull-left control-label">Ort</label>
+													<input name="city" placeholder="Ort" class="form-control" type="text"   required ng-model="user.city">
+												</div>	
+												<div class="form-group" ng-hide="true">
+													<label class="pull-left control-label">Land</label>
+													<input name="Country" placeholder="Land" class="form-control" type="text" ng-model="user.country">
+												</div>	
+											
+										
+									</div>
+								</div>
+								
+								
+									<div class="col-xs-12 col-sm-12 col-md-12" style="padding: 0 0 10px 0;">
+									
+									<!-- <div class="btn-group text-center full pull-left" data-toggle="buttons">
+									<label class="btn btn-success btn-block" style="margin-left: 0px !important; margin-right: 0px !important;">
+									     <input class="fullhigh" type="checkbox"  ng-model="confirmed" value="" autocomplete="off">  Die AGB's  sowie die Widerrufsbelehrung habe ich gelesen und bin mit den Lieferbedingungen einverstanden. Ich bin älter als 18 Jahre. -->
+									   <!-- </label> -->
+									   
+									   <checkbox id="confirm" ng-model="confirmed" ng-true-value="X" ng-false-value=" ">
+									 </checkbox><span class="confirmlabel">Die <a href="#" data-toggle="modal" data-target=".text-modal">AGB's</a>  sowie die Widerrufsbelehrung habe ich gelesen und bin mit den Lieferbedingungen einverstanden. Ich bin älter als 18 Jahre.</span>
+									<!-- </div>	
+									<button type="button" class="btn btn-success btn-block btn-agbs" ng-model="singleModel" uib-btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
+									        Die AGB's  sowie die Widerufsbelehrung habe ich gelesen und bin mit den Lieferbedingen einvestanden
+									    </button>-->
+									 </div>
+								
+						</div>
+						<div class="container">
+							<a class="pull-left btn btn-store" href="#" ng-click="submitOrder()" ng-disabled="!confirmed">Kostenpflichtig bestellen</a>    <a class="pull-right btn btn-store pull-right" href="#" data-dismiss="modal" style="margin-right: 0px;">Zurück zum Shop</a>
+						</div>
+					</div>
+					
+					
+				</div>
+			</div>
+			
+		</section>
+		
+		<section id="cta" class="color-bg light-typo">
+			<div class="container">
+				<div class="row text-center">
+					<div class="col-md-4 col-sm-4 news wow fadeInUp" data-wow-delay="0.4s" data-wow-offset="10">
+						<i class="icon-trophy iconBig"></i>
+						<h3>Garantierte Qualität</h3>
+					</div>
+					<div class="col-md-4 col-sm-4 news wow fadeInUp" data-wow-delay="0.8s" data-wow-offset="10">
+						<i class="icon-truck iconBig"></i>
+						<h3>Auslieferung bis 25 km</h3>
+					</div>
+					<div class="col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="1.6s" data-wow-offset="10">
+						<i class="icon-lock iconBig news"></i>
+						<h3>Sichere Zahlungweise</h3>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="contact" class="gray-bg padding-top-bottom">
+			<div class="container">
+				<header class="section-header text-center">
+					<h1><strong>Kontakt</strong></h1>
+					<p>Fragen, Probleme oder Anregungen?</p>
+				</header>
+				<!--<form action="shop.html" method="post" novalidate id="contact-form">-->
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-4 contact-info cta-message wow fadeInLeft">
+							<address>
+								<strong>Herrenmühle Wein</strong><br>
+								Im Himmelreich 1<br>
+								79238 Ehrenkirchen<br>
+								
+								<a href="tel:+49763381569">Tel.: +49763381569</a><br />
+								<a href="mailto:info@herrenmuehle-wein.de">info[at]herrenmuehle-wein.de</a>
+							</address>
+						</div>	
+
+						<div class="col-xs-12 col-sm-12 col-md-8 wow fadeInUp" >
+							<div class="form-group">
+								<label class="control-label" for="contact-name">Name</label>
+								<div class="controls">
+									<input id="contact-name" name="contactName" placeholder="Ihr name" class="form-control input-lg requiredField" type="text" ng-model="contact.name">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label" for="contact-mail">Email</label>
+								<div class=" controls">
+									<input id="contact-mail" name="email" placeholder="Ihre Email" class="form-control input-lg requiredField" type="email"  ng-model="contact.email">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label" for="contact-message">Mitteilung</label>
+								<div class="controls">
+									<textarea id="contact-message" name="comments" placeholder="Ihre Nachricht" class="form-control input-lg requiredField" rows="5"  ng-model="contact.message"></textarea>
+								</div>
+							</div>
+							<p>
+								<button ng-click="submitContactMessage()" class="btn btn-store btn-block blur">Senden</button></p>
+							<!--<input type="hidden" name="submitted" id="submitted3" value="true"> -->
+						</div>
+					</div>
+				<!--</form> -->
+			</div>
+		</section>
+
+		<footer id="main-footer" class="dark-bg light-typo">
+			<div class="container">
+				<p class="pull-left copyright wow fadeInUp">&copy; 2016 pdw@herrenmuehle-wein.de<br>
+				</p>
+
+				<div class="pull-right paymentMethodImg copyright wow fadeInRight">
+					<a class="btn btn-store outline" href="#" data-toggle="modal" data-target=".text-modal">Lieferbedingungen &amp; AGB's</a>
+				</div>
+			</div>
+		</footer>
+
+		<div class="modal fade text-modal" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="color-bg">	
+						<div class="container">
+							<div class="row ">
+								<div class="col-xs-12 col-sm-12 col-md-12 color-bg light-typo" id="9modal-bar">
+									<h2 class="pull-left">Lieferbedingungen &amp; AGB's</h2>
+									<a class="close pull-right" href="#" data-dismiss="modal" ><i class="icon-close"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="container">
+						<div class="row ">
+							<div class="col-xs-12 col-sm-6 col-md-6" >	
+								<h3>Allgemeine Geschäftsbedingungen 'Herrenmühle Wein im Weingut Stehlin'</h3>
+							
+								<p style="font-weight: bold; padding-bottom: 10px;">§1 Geltung gegenüber Unternehmern und Begriffsdefinitionen</p>
+								(1) Die nachfolgenden Allgemeinen Geschäftbedingungen gelten für alle Lieferungen zwischen uns und einem Verbraucher
+								in ihrer zum Zeitpunkt der Bestellung gültigen Fassung.<br />
+								<br />
+								Verbraucher ist jede natürliche Person, die ein Rechtsgeschäft zu Zwecken abschließt, die überwiegend weder
+								ihrer gewerblichen noch ihrer selbständigen beruflichen Tätigkeit zugerechnet werden können (§ 13 BGB).
+								<br />
+								
+								    <br />
+								<p style="font-weight: bold; padding-bottom: 10px;">§2 Zustandekommen eines Vertrages, Speicherung des Vertragstextes</p>
+								(1) Die folgenden Regelungen über den Vertragsabschluss gelten für Bestellungen über unseren Internetshop https://online-weinkeller.herrenmuehle-wein.de .<br />
+								<br />
+								<b>(2) Im Falle des Vertragsschlusses kommt der Vertrag mit<br />
+								
+								<div style="font-weight: bold; margin-left: 20px;" >
+								<br />
+								Herrenmühle Wein im Weingut Stehlin<br />
+								Peter. de Waard<br />
+								im Himmelreich 1<br />
+								D-79238 Ehrenstetten<br />
+								Registernummer <br />
+								Registergericht <br />
+								<br />
+								</div>
+								zustande.<br /></b>
+								<br />
+								(3) Die Präsentation der Waren in unserem Internetshop stellen kein rechtlich bindendes Vertragsangebot unsererseits dar,
+								sondern sind nur eine unverbindliche Aufforderungen an den Verbraucher, Waren zu bestellen. Mit der Bestellung der gewünschten Ware gibt der Verbraucher ein für
+								ihn verbindliches Angebot auf Abschluss eines Kaufvertrages ab.<br />
+								(4) Bei Eingang einer Bestellung in unserem Internetshop gelten folgende Regelungen:
+								Der Verbraucher gibt ein bindendes Vertragsangebot ab, indem er die in unserem Internetshop vorgesehene Bestellprozedur erfolgreich durchläuft.<br />
+								<br />
+								Die Bestellung erfolgt in folgenden Schritten:<br />
+								<br />
+								<div class="ml20">
+								     
+								    1) Auswahl der gewünschten Ware<br /> 
+								     
+								    2) Bestätigen durch Auswahl der gewünschten Menge <br /> 
+								     
+								    3) Prüfung der Angaben im Warenkorb<br /> 
+								     
+								    4) Betätigung des Buttons „zur Kasse“ <br /> 
+								     
+								    5) Anmeldung im Internetshop nach Registrierung und Eingabe der Anmelderangaben (E-Mail-Adresse und Passwort). <br /> 
+								     
+								    6) Nochmalige Prüfung bzw. Berichtigung der jeweiligen eingegebenen Daten.<br /> 
+								     
+								    7) Verbindliche Absendung der Bestellung durch Anklicken des Buttons „kostenpflichtig bestellen“ bzw. „kaufen“<br /> 
+								     
+								<br />
+								</div>
+								Der Verbraucher kann vor dem verbindlichen Absenden der Bestellung durch Betätigen der in dem von ihm verwendeten Internet-Browser enthaltenen „Zurück“-Taste nach
+								Kontrolle seiner Angaben wieder zu der Internetseite gelangen, auf der die Angaben des Kunden erfasst werden und Eingabefehler berichtigen bzw. durch Schließen des
+								Internetbrowsers den Bestellvorgang abbrechen.
+								Wir bestätigen den Eingang der Bestellung unmittelbar durch eine automatisch generierte E-Mail („Auftragsbestätigung“). Mit dieser nehmen wir Ihr Angebot an.
+								<br />
+								<br />
+								(5) Speicherung des Vertragstextes bei Bestellungen über unseren Internetshop : Wir senden Ihnen die Bestelldaten und unsere AGB per
+								E-Mail zu. Die AGB können Sie jederzeit auch unter https://online-keller.herrenmuehle-wein.de/#agb  einsehen.
+								
+								Ihre Bestelldaten sind aus Sicherheitsgründen nicht mehr über das Internet zugänglich.
+								<br />
+								
+								
+								<p style="font-weight: bold; padding-bottom: 10px;">§3 Preise, Versandkosten, Zahlung, Fälligkeit</p>
+								(1) Die angegebenen Preise enthalten die gesetzliche Umsatzsteuer und sonstige Preisbestandteile. Hinzu kommen etwaige Versandkosten.<br />
+								<br />
+								(2) Der Verbraucher hat die Möglichkeit der Zahlung per 
+								            Vorkasse, 
+								     
+								        
+								     
+								        
+								            Nachnahme, 
+								     
+								        
+								     
+								        
+								            Bankeinzug, 
+								     
+								        
+								     
+								        
+								            PayPal 
+								     
+								        
+								     
+								        
+								.<br />
+								<br />
+								 
+								(3) Hat der Verbraucher die Zahlung per Vorkasse gewählt, so verpflichtet er sich, den Kaufpreis unverzüglich nach Vertragsschluss zu zahlen.<br />
+								Soweit wir per Nachnahme liefern, tritt die Fälligkeit der Kaufpreisforderung mit Erhalt der Ware ein. 
+								 
+								
+								<br />
+								<p style="font-weight: bold; padding-bottom: 10px;">§4 Lieferung</p>
+								(1) Sofern wir dies in der Produktbeschreibung nicht deutlich anders angegeben haben, sind alle von uns angebotenen Artikel sofort versandfertig.
+								Die Lieferung erfolgt hier spätesten innerhalb von 5 Werktagen.
+								Dabei beginnt die Frist für die Lieferung im Falle der Zahlung per Vorkasse am Tag nach
+								Zahlungsauftrag an die mit der Überweisung beauftragte Bank und bei allen anderen Zahlungsarten am Tag nach Vertragsschluss zu laufen.
+								Fällt das Fristende auf einen Samstag, Sonntag oder gesetzlichen Feiertag am Lieferort, so endet die Frist am nächsten Werktag.
+								<br /><br />
+								
+								(2) Die Gefahr des zufälligen Untergangs und der zufälligen Verschlechterung der
+								verkauften Sache geht auch beim Versendungskauf erst mit der Übergabe der Sache an den Käufer auf diesen über.  <br />
+								
+								
+								<br />
+								<p style="font-weight: bold; padding-bottom: 10px;">§5 Eigentumsvorbehalt</p>
+								Wir behalten uns das Eigentum an der Ware bis zur vollständigen Bezahlung des Kaufpreises vor. <br />
+								
+								
+								
+								            <br />
+								
+								****************************************************************************************************
+								<br />
+								<p style="font-weight: bold; padding-bottom: 10px;">§6 Widerrufsrecht des Kunden als Verbraucher:
+								</p>
+								
+								<b>
+								    Widerrufsrecht für Verbraucher</b><br />
+								    <br />
+								    Verbrauchern steht ein Widerrufsrecht nach folgender Maßgabe zu, wobei Verbraucher jede natürliche Person ist, die ein Rechtsgeschäft zu Zwecken abschließt,
+								    die überwiegend weder ihrer gewerblichen noch ihrer selbständigen beruflichen Tätigkeit zugerechnet werden können:
+								
+								    <br />
+								    </div>
+								    <div class="col-xs-12 col-sm-6 col-md-6" >
+								    <br />
+								
+								    <p style="font-weight: bold; padding-bottom: 1px; text-align: center;">Widerrufsbelehrung</p>
+								    <br />
+								    <b>Widerrufsrecht</b><br />
+								    <br />
+								    Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen.
+								    <br />
+								    <br />
+								    Die Widerrufsfrist beträgt vierzehn Tage, ab dem Tag, an dem Sie oder ein von Ihnen benannter Dritter,
+								        der nicht der Beförderer ist, die Waren in Besitz genommen haben bzw. hat.
+								
+								    <br /><br />
+								    Um Ihr Widerrufsrecht auszuüben, müssen Sie uns<br />
+								    <div style="margin-left:20px; margin-top: 5px; margin-bottom:5px;">
+								        Herrenmühle Wein im Weingut Stehlin<br />
+								        Peter. de Waard<br />
+								        im Himmelreich 1<br />
+								        D-79238 Ehrenstetten<br />
+								        E-Mail pdw@herrenmuehle-wein.de<br />
+								            </div>
+								    mittels einer eindeutigen Erklärung (z.B. ein mit der Post versandter Brief, Telefax oder E-Mail) über Ihren Entschluss,
+								    diesen Vertrag zu widerrufen, informieren. Sie können dafür das beigefügte Muster-Widerrufsformular verwenden, das jedoch nicht vorgeschrieben ist.
+								    <br />
+								    
+								    <br />
+								
+								    <b>Widerrufsfolgen</b>
+								    <br /><br />
+								    Wenn Sie diesen Vertrag widerrufen, haben wir Ihnen alle Zahlungen, die wir von Ihnen erhalten haben, einschließlich der
+								    Lieferkosten (mit Ausnahme der zusätzlichen Kosten, die sich daraus ergeben, dass Sie eine andere Art der Lieferung als
+								    die von uns angebotene, günstigste Standardlieferung gewählt haben), unverzüglich und spätestens binnen vierzehn Tagen
+								    ab dem Tag zurückzuzahlen, an dem die Mitteilung über Ihren Widerruf dieses Vertrags bei uns eingegangen ist.
+								    Für diese Rückzahlung verwenden wir dasselbe Zahlungsmittel, das Sie bei der ursprünglichen Transaktion eingesetzt haben,
+								    es sei denn, mit Ihnen wurde ausdrücklich etwas anderes vereinbart; in keinem Fall werden Ihnen wegen dieser Rückzahlung Entgelte berechnet.
+								<br />
+								<br />
+								
+								    Wir können die Rückzahlung verweigern, bis wir die Waren wieder zurückerhalten haben oder bis Sie den Nachweis erbracht haben,
+								    dass Sie die Waren zurückgesandt haben, je nachdem, welches der frühere Zeitpunkt ist.
+								<br />
+								<br />
+								
+								    Sie haben die Waren unverzüglich und in jedem Fall spätestens binnen vierzehn Tagen ab dem Tag, an dem Sie uns über den
+								    Widerruf dieses Vertrages unterrichten, an uns zurückzusenden oder zu übergeben. Die Frist ist gewahrt,
+								    wenn Sie die Waren vor Ablauf der Frist von vierzehn Tagen absenden.
+								    <br />
+								    <br />
+								
+								Sie tragen die unmittelbaren Kosten der Rücksendung der Waren.<br />
+								<br />
+								
+								    
+								    <b>Ende der Widerrufsbelehrung</b>
+								<br />
+								<br />
+								****************************************************************************************************
+								
+								<br />
+								    
+								
+								
+								
+								
+								<p style="font-weight: bold; padding-bottom: 10px;">§7 Widerrufsformular</p>
+								
+								<p style="text-align: center; font-weight: bold;">Muster-Widerrufsformular</p>
+								(Wenn Sie den Vertrag widerrufen wollen, dann füllen Sie bitte dieses Formular aus und senden Sie es zurück.)<br />
+								<div style="border: 1px solid #000000;padding: 10px;">
+								An :<br />
+								Herrenmühle Wein im Weingut Stehlin<br />
+								Peter. de Waard<br />
+								im Himmelreich 1<br />
+								D-79238 Ehrenstetten<br />
+								E-Mail pdw@herrenmuehle-wein.de<br />
+								<br />
+								
+								Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*) abgeschlossenen Vertrag über den Kauf der folgenden Waren (*)/die Erbringung der folgenden Dienstleistung (*)<br />
+								<br />
+								_____________________________________________________<br />
+								<br />
+								Bestellt am (*)/erhalten am (*)<br />
+								<br />
+								__________________<br />
+								<br />
+								Name des/der Verbraucher(s)<br />
+								<br />
+								_____________________________________________________<br />
+								<br />
+								Anschrift des/der Verbraucher(s)<br />
+								<br />
+								<br />
+								_____________________________________________________<br />
+								<br />
+								Unterschrift des/der Verbraucher(s) (nur bei Mitteilung auf Papier)<br />
+								<br />
+								__________________<br />
+								<br />
+								Datum<br />
+								<br />
+								__________________<br />
+								<br />
+								</div>
+								(*) Unzutreffendes streichen.<br />
+								
+								
+								
+								<br />
+								<p style="font-weight: bold; padding-bottom: 10px;">§8 Gewährleistung
+								</p>
+								
+								Es gelten die gesetzlichen Gewährleistungsregelungen.
+								<br />
+								
+								
+								<br />
+								<p style="font-weight: bold; padding-bottom: 10px;">§9 Vertragssprache</p>
+								 Als Vertragssprache steht ausschließlich Deutsch zur Verfügung.<br />
+								
+								<br />
+								<br />
+								<p>Stand der AGB Mär.2016</p>
+								
+								<p><i><a href="http://www.agb.de">Gratis AGB</a> erstellt von agb.de</i></p>
+								
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-12 text-center" >	
+								<a class="btn btn-store" href="#" data-dismiss="modal">Zurück zum Shop</a><br><br>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		
+		  ga('create', 'UA-36912149-4', 'auto');
+		  ga('send', 'pageview');
+		
+		</script>
+	</body>
+</html>

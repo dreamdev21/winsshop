@@ -1,0 +1,332 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<head lang="en">
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title>Canvas puzzle</title>
+	<!-- Framework CSS -->
+	<link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print">
+	<!--[if lt IE 8]><link rel="stylesheet" href="assets/blueprint-css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	<link rel="stylesheet" href="assets/blueprint-css/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="styles/shCore.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="styles/shCoreDefault.css" type="text/css" media="screen, projection">
+	<style type="text/css" media="screen">
+		p, table, hr, .box { margin-bottom:25px; }
+		.box p { margin-bottom:10px; }
+		code { border: 1px solid #ddd; font-weight: bold; color: green; padding: 2px; }
+	</style>
+	<script src="scripts/shCore.js"></script>
+	<script src="scripts/shBrushXml.js"></script>
+	<script src="scripts/shBrushJScript.js"></script>
+	<script src="scripts/shBrushPhp.js"></script>
+</head>
+
+
+<body>
+	<div class="container">
+	
+		<h3 class="center alt">&ldquo;Canvas Puzzle&rdquo; Documentation by &ldquo;sney2002&rdquo; v2.0</h3>
+		
+		<hr>
+		
+		<h1 class="center">&ldquo;Canvas Puzzle&rdquo;</h1>
+		
+				<p class="prepend-top append-0">Thank you for purchasing my game. If you have any questions, please feel free to contact me <a href="http://codecanyon.net/user/sney2002">here</a>.</p>
+		
+		<hr>
+		
+		<h2 id="toc" class="alt">Table of Contents</h2>
+		<ol class="alpha">
+		    <li><a href="#gettingStarted">Getting Started</a></li>
+		    <li><a href="#options">Available options</a></li>
+		    <li><a href="#redirect">Redirect to another page</a></li>
+		    <li><a href="#scores">Saving score</a></li>
+			<li><a href="#htmlStructure">HTML Structure</a></li>
+			<li><a href="#cssFiles">CSS Files and Structure</a></li>
+			<li><a href="#javascript">JavaScript</a></li>
+			<li><a href="#translate">Translating canvas puzzle</a></li>
+			<li><a href="#puzzleList">Create a list of puzzles</a></li>
+			<li><a href="#credits">Sources and Credits</a></li>
+		</ol>
+		
+		<hr>
+		
+		<h3 id="features">Features - <a href="#toc">top</a></h3>
+		
+		<ul>
+		    <li><code>new</code> i18n ready</li>
+		    <li><code>new</code> Flash fallback for IE 6, 7, 8</li>
+		    <li>Works on IPAD!!!!!</li>
+		    <li>Works on all modern browsers</li>
+		    <li>Image Preview</li>
+		    <li>infinite number of pieces (though over 100 is too difficult)</li>
+		    <li>Image resizing</li>
+		    <li>Works with any image.</li>
+		    <li>Very light-weight</li>
+		</ul>
+		
+		<hr>
+		<h3 id="gettingStarted"><strong>A) Getting started</strong> - <a href="#toc">top</a></h3>
+		<p>First put the <code>puzzle.php</code> in the server root and create a list of puzzles somewhere in your site.</p>
+		<script type="syntaxhighlighter" class="brush: html">
+		<ul>
+		    <li><a href="/puzzle.php?image={{ put image url here }}"><img src="thumb/image1.jpg"/></a></li>
+		    <li><a href="/puzzle.php?image={{ put image url here }}"><img src="thumb/image2.jpg"/></a></li>
+		</ul>
+		</script>
+		<p>Every item in the list contains a thumbnail and a link to the puzzle page with a parameter (image) that point to the large version of the image.</p>
+		<p>Then change the default image at the end of the <code>puzzle.php</code> file.</p>
+		<script type="syntaxhighlighter" class="brush: js">
+		    ;(function(){
+                var jsaw = new jigsaw.Jigsaw({
+                    defaultImage: "images/puzzle/scottwills_meercats.jpg", // required
+                    piecesNumberTmpl: "<?php echo _('%d Pieces'); ?>"
+                });
+                
+                if (jigsaw.GET["image"]) { jsaw.set_image(jigsaw.GET["image"]); }
+            }());
+        </script>
+        <p>This image will be used if no one is provided.</p>
+        <p>Congratulations: You have Canvas Puzzle installed.</p>
+        
+        <hr>
+<h3 id="options"><strong>B) Available options</strong> - <a href="#toc">top</a></h3>
+<p>Below is an example with all available options and their defaults values: </p>
+<script type="syntaxhighlighter" class="brush: js">
+jsaw = new jigsaw.Jigsaw({
+            defaultImage: "images/puzzle/scottwills_meercats.jpg", // required
+            maxWidth: 768, // max height of the image.
+            maxHeight: 500, // max width of the image.
+            redirect: "", // redirect to this url when the puzzle is complete
+            border: true, // draw a border around the pieces
+            shuffled: false, // shuffle the puzzle on load
+            rotatePieces: true // rotate the pieces
+            spread: .7, // percent of the page to spread the pieces
+            offsetTop: 0,
+            piecesNumberTmpl: "%d Pieces", // template for piece selector
+        });
+</script>
+        
+        <hr>
+		<h3 id="redirect"><strong>C) Redirect to another page</strong> - <a href="#toc">top</a></h3>
+		<p>So you want to create a contest and save the scores in your database? just specify a url to redirect when the puzzle is complete:</p>
+		
+		<script type="syntaxhighlighter" class="brush: html">
+		var jsaw = new jigsaw.Jigsaw({
+		    redirect: "http://mypage.com/scores"
+		});
+		</script>
+        <p>you will receive two POST parameters:</p>
+        <ul>
+            <li><b>time:</b> Time required to complete the puzzle in ISO 8601 format (hh:mm:ss).</li>
+            <li><b>parts:</b> Number of parts used.</li>
+        </ul>
+        <p>Use these to rank the players.</p>
+        <hr>
+        <h3 id="scores"><strong>D) Saving score</strong> - <a href="#toc">top</a></h3>
+        <p>So you want to save the score of your users in a database?, just remove the class <code>"hide"</code> from the form in the congratulation section: </p>
+        <script type="syntaxhighlighter" class="brush: html">
+        <a href="#" class="close" title="close" onclick="return jigsaw.UI.close_lightbox();">X</a>
+        <h1>Congratulations!</h1>
+        <h2>You solved it in</h2>
+        <h3><span id="time"></span></h3>
+        <form method="post" class="hide" action="" target="save-score" onsubmit="jigsaw.UI.close_lightbox();">
+            <label>
+            Your Name: <input type="text" name="name" />
+            </label>
+            <input type="submit" value="Save score" />
+            <input type="hidden" id="time-input" name="time"/>
+        </form>
+        </script>
+        <p>Ask the player for their username, email or whatever you want.  When the form is submitted you will receive one POST parameter:</p>
+        <ul>
+            <li><code>time</code>: Time required to complete the puzzle in ISO 8601 format (hh:mm:ss).</li>
+        </ul>
+        <hr>
+		<h3 id="htmlStructure"><strong>E) HTML Structure</strong> - <a href="#toc">top</a></h3>
+		<p>The game use the following HTML structure, you may want to change the Congratulation and Help sections.</p>
+		<script type="syntaxhighlighter" class="brush: html">
+<!-- JIGSAW CANVAS -->
+<div id="canvas-wrap">
+    <canvas id="canvas"></canvas>
+    <canvas id="buffer"></canvas>
+    <canvas class="hide" id="image-preview"></canvas>
+</div>
+
+<!-- GAME OPTIONS -->
+<ul id="game-options">
+    <li><b id="clock" class="button">00:00:00</b></li>
+    <li><a href="#" id="SHOW_EDGE" class="button left">Border</a></li>
+    <li><a href="#" id="SHOW_MIDDLE" class="button middle">Middle</a></li>
+    <li><a href="#" id="SHOW_ALL" class="button right">All</a></li>
+    <li><a href="#" id="JIGSAW_SHUFFLE" class="button">Shuffle</a></li>
+    <li><a href="#" id="SHOW_PREVIEW" class="button">Preview</a></li>
+    <li><a href="#" id="SHOW_HELP" class="button help">Help</a></li>
+    <li>
+        <div class="styled-select">
+            <select id="set-parts">
+            </select>
+        </div>
+    </li>
+</ul>
+
+<!-- OVERLAY -->
+<div class="hide" id="overlay"></div>
+
+<!-- CONGRATULATION -->
+<div id="congrat" class="hide">
+    <a href="#" class="close" title="cerrar" onclick="jigsaw.UI.close_lightbox();">X</a>
+    <span id="time"></span>
+</div>
+
+<!-- HELP -->
+<div id="help" class="hide">
+    <a href="#" class="close" title="cerrar" onclick="jigsaw.UI.close_lightbox();">X</a>
+</div>
+		</script>
+		
+		<p>To add a new button insert a link inside a <code>li</code> tag at the end of game options section:</p>
+
+<script type="syntaxhighlighter" class="brush: html">
+<ul id="game-options">
+    ...
+    <!-- Home page button -->
+    <li><a href="/" class="button">Home</a></li>
+</ul>
+</script>
+
+		<hr>
+
+		<h3 id="cssFiles"><strong>F) CSS Files and Structure</strong> - <a href="#toc">top</a></h3>
+
+		<p>There are two CSS files.<code>style.css</code> contains all of the specific stylings for the app. The file is separated into sections using:</p>  
+
+<pre>
+/*== Jigsaw puzzle ==*/
+
+/*== Options bar ==*/
+
+/*== Clock ==*/
+
+/*== Select ==*/
+
+/*== Share buttons ==*/
+
+/*== Modal window ==*/
+</pre>
+		
+		<p><b>Note:</b> You may want to change the <code>div.modal</code> rule at the Modal Window section.</p> 
+		<p>The <code>buttons.css</code> file specifies the appearance of the buttons.</p>.
+
+		<hr>
+		
+		<h3 id="javascript"><strong>G) JavaScript</strong> - <a href="#toc">top</a></h3>
+		
+		<p>This game imports three Javascript files.</p>
+		
+		<ol>
+			<li><a href="http://sney2002.github.com/canvas-event-js">canvas-event-js</a>: javascript library that add events to the canvas element.</li>
+			<li>EventEmmiter: javascript library to listen and emit custom events.</li>
+			<li>canvas-puzzle: The Puzzle game.</li>
+			<li>flashcanvas.js: for compatibility with IE &lt; 9</li>
+		</ol>
+		  
+		<p>To initialize the app just create an instance of <code>jigsaw.Jigsaw()</code> after the DOM is ready. You can also specify an object with <a href="#options">some options</a>.</p>
+		
+		<script type="syntaxhighlighter" class="brush: js">
+		    var jsaw = jigsaw.Jigsaw();
+		    // OR
+		    var jsaw = jigsaw.Jigsaw({
+		        maxWidth: 500,
+		        maxHeight: 300
+		    });
+        </script>
+		
+	    <hr>
+		
+		<h3 id="translate"><strong>H) Translating Canvas Puzzle</strong> - <a href="#toc">top</a></h3>
+		
+		<p>Canvas puzzle now comes ready to translate into any language. inside the folder <code>locale</code> you can find the template <code>messages.pot</code> which you can use to translate the game to your idiom</p>
+		
+		<ol>
+		    <li><a href="http://www.poedit.net/download.php" title="poedit">Download</a> and install poedit.</li>
+		    <li>Start Poedit and open the file <code>locale/messages.pot</code> (File > New catalog from POT file)
+		    <br><br><img src="assets/images/menu.png"><br><br>
+		    </li>
+		    <li>Fill the necessary parameters
+		    <br><br><img src="assets/images/options.png"><br><br>
+		    </li>
+		    <li>After you click OK, you’ll be asked to save the new PO file created from the template. Save it as the corresponding locale, say language = <b>spanish (es)</b> and Country = <b>Spain (ES)</b> then the path will be /<code>es_ES</code>/LC_MESSAGES/messages.po, you can find a list of locale abbreviations <a href="http://www.roseindia.net/tutorials/I18N/locales-list.shtml">here</a>.</li>
+		    <br><img src="assets/images/save.png"><br><br>
+		    <li>Now you can start to translate the po file</li>
+		    <br><img src="assets/images/translate.png"><br><br>
+		    <li>After finish just save the file (File > Save)</li>
+		</ol>
+		
+		<p>After you finish translating the template you should edit the file <code>include/translate.php</code> and change the code at line 2:</p>
+		
+		<script type="syntaxhighlighter" class="brush: php">
+		    &lt;?php
+            $lang = "es_ES";
+
+            if ( !function_exists("_") ) {
+	            function _($text) {
+		            return $text;
+	            }
+            }
+            
+            ...
+            ...
+            ...
+            ?&gt;
+        </script>
+        
+        <hr>
+	    
+		<h3 id="puzzleList"><strong>I) Create a list of puzzles</strong> - <a href="#toc">top</a></h3>
+		
+		<p>To create a list of puzzle with thumbnails you can use the file <code>include/puzzle-list.php</code>, just include this file where you want to create the puzzle list as in the following example</p>
+		<script type="syntaxhighlighter" class="brush: php">
+		<?php
+		    include_once("include/puzzle-list.php");
+            
+            # pass the path to the folder with the images
+            $imageList = new PuzzleList("images/puzzle");
+
+            # pass the url where the game is installed
+            $imageList->createPuzzleList("http://localhost/puzzle-2.0");
+        ?>
+		</script>
+		
+		<p><b>Note:</b> to use this script you need GD2.</p>
+		
+	    <p>this will generate a <code>html</code> as the following:</p>
+	    
+        <script type="syntaxhighlighter" class="brush: html">
+        <ul class='canvas-puzzle-list'>
+        <li><a href='http://localhost/puzzle-2.0?image=images/puzzle/cyan_kangaroo.jpg'><img src="images/puzzle/thumbnails/cyan_kangaroo.jpg"></a></li>
+        <li><a href='http://localhost/puzzle-2.0?image=images/puzzle/cyan_koala.jpg'><img src="images/puzzle/thumbnails/cyan_koala.jpg"></a></li>
+        </ul>        
+        </script>	    
+	    <hr>
+	    
+		<h3 id="credits"><strong>J) Sources and Credits</strong> - <a href="#toc">top</a></h3>
+		
+		<p>I've used the following code:
+		
+		<ul>
+			<li>Google-styled buttons by <a href="http://pixify.com/blog/use-google-plus-to-improve-your-ui">pixify</a>.</li>
+			<li>EventEmitter by <a href="http://www.joyent.com/">Joyent, Inc</a>.</li>
+			<li>FlashCanvas Pro by <a href="http://flashcanvas.net/">flashcanvas.net</a>.</li>
+		</ul>
+		<hr>
+		
+		<p class="append-bottom alt large"><strong>Jhonatan Salguero</strong></p>
+		<p><a href="#toc">Go To Table of Contents</a></p>
+		
+		<hr class="space">
+	</div><!-- end div .container -->
+	<script>
+	    SyntaxHighlighter.all();
+	</script>
+</body>
+</html>
